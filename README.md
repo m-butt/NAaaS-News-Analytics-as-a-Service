@@ -1,7 +1,7 @@
 # FYP Final Year Description
 ![Live Demo](Demo.gif)
 
-![](Demo.jpg)
+![](Images/Demo.jpg)
 ## Introduction
 We are proud to present our Final Year Project (FYP), NAaaS (News Analytics as a Service). NAaaS revolutionizes the way news is accessed and analyzed, offering a comprehensive solution for obtaining relevant news information within specified timeframes. Gone are the days of manual searches and sifting through numerous articles. With NAaaS, we have streamlined the process through advanced automation techniques and cutting-edge technologies.
 
