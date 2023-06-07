@@ -31,4 +31,4 @@ jobs:
       -
         name: Test
         run: |
-          docker run --rm ${{ env.TEST_TAG }}
+          timeout 1m docker run --rm ${{ env.TEST_TAG }}
