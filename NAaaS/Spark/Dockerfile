@@ -3,6 +3,7 @@ FROM bitnami/spark:latest
 USER root
 # Install Python libraries 
 COPY requirements.txt requirements.txt
+RUN mkdir -p /opt/bitnami/spark/
 COPY Alldata_refined.csv /opt/bitnami/spark/alldata_refined.csv 
 RUN pip install -r requirements.txt
 RUN python -m spacy download en_core_web_sm
