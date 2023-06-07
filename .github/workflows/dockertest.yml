@@ -28,7 +28,7 @@ jobs:
           load: true
           tags: ${{ env.TEST_TAG }}
           build-args: |
-            DOCKERFILE_PATH_1= /NAaaS/Spark/Dockerfile
+            DOCKERFILE_PATH_1= NAaaS-M-Dops/NAaaS/Spark/Dockerfile
       -
         name: Test
         run: |
