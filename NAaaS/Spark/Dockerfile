@@ -5,6 +5,5 @@ USER root
 COPY ./NAaaS/Spark/requirements.txt requirements.txt
 COPY ./NAaaS/Spark/Alldata_refined.csv /opt/bitnami/spark/alldata_refined.csv 
 RUN pip install -r requirements.txt
-RUN python -m spacy download en_core_web_sm
 RUN [ "python", "-c", "import nltk; nltk.download('wordnet')" ]
 RUN apt update -y
