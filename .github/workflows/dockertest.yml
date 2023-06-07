@@ -24,10 +24,10 @@ jobs:
         id: docker_build
         uses: docker/build-push-action@v4
         with:
+          file: ./NAaaS/Spark/Dockerfile
           context: .
           load: true
           tags: ${{ env.TEST_TAG }}
-          file: NAaaS-M-Dops/NAaaS/Spark/Dockerfile
       -
         name: Test
         run: |
