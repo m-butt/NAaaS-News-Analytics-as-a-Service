@@ -16,4 +16,4 @@ findspark==2.0.1
 datefinder==0.7.3
 dateparser==1.1.1
 scikit_learn==1.2.2
-en_core_web_sm
+
