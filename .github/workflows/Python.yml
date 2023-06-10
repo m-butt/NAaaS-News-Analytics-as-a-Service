@@ -16,13 +16,13 @@ jobs:
     - name: Set up Python
       uses: actions/setup-python@v2
       with:
-        python-version: 3.9  # Specify the Python version you want to use
+        python-version: 3.x  # Specify the Python version you want to use
 
     - name: Determine changed Python files
       id: changed-files
       run: |
-        LATEST_COMMIT=$(git rev-parse HEAD)
-        PREVIOUS_COMMIT=$(git rev-parse HEAD^)
+        LATEST_COMMIT=$(git log -1 --format='%H')
+        PREVIOUS_COMMIT=$(git log -2 --skip=1 --format='%H')
         CHANGED_FILES=$(git diff --name-only $PREVIOUS_COMMIT $LATEST_COMMIT --diff-filter=d -- "**/*.py")
         echo "::set-output name=changed_files::${CHANGED_FILES}"
 
