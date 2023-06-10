@@ -38,14 +38,16 @@ jobs:
             **.py
             
     - name: Run Mlflow
+      if: steps.changed-files-excluded.outputs.any_changed == 'true'
       with:
         file: ./NAaaS/Spark/Dockerfile
-        if: steps.changed-files-excluded.outputs.any_changed == 'true'
         run: | 
           echo "Init_accuracy=$(cat outputs/test.txt)" >> $GITHUB_OUTPUT
           run: python -m Test.py
           echo "Final_accuracy=$(cat outputs/test.txt)" >> $GITHUB_OUTPUT
-    
+
+      
+            
     - name: Compare accuracies and echo message
       run: |
           initial_accuracy=$(grep -oP 'initial_accuracy=\K[^ ]+' $GITHUB_OUTPUT)
