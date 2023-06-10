@@ -16,12 +16,12 @@ jobs:
     - name: Set up Python
       uses: actions/setup-python@v2
       with:
-        python-version: 3.9
+        python-version: 3.9  # Specify the Python version you want to use
 
     - name: Determine changed Python files
       id: changed-files
       run: |
-        CHANGED_FILES=$(git diff --name-only ${{ github.event.before }} ${{ github.sha }} --diff-filter=d -- "**/*.py")
+        CHANGED_FILES=$(git diff --name-only HEAD^ HEAD --diff-filter=d -- "**/*.py")
         echo "::set-output name=changed_files::${CHANGED_FILES}"
 
     - name: Install dependencies
