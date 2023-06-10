@@ -1,7 +1,9 @@
-name: ci
+name: docker
 
 on:
   push:
+    paths:
+      - NAaaS/Spark/**
     branches:
       - "main"
 
