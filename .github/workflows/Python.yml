@@ -1,0 +1,37 @@
+name: Python Test
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Set up Python
+      uses: actions/setup-python@v2
+      with:
+        python-version: 3.9  # Specify the Python version you want to use
+
+    - name: Determine changed Python files
+      id: changed-files
+      run: |
+        git fetch --no-tags --prune --depth=1 origin "+refs/heads/main:refs/remotes/origin/main"
+        CHANGED_FILES=$(git diff --name-only ${{ github.event.before }} ${{ github.sha }} --diff-filter=d -- '*.py')
+        echo "::set-output name=changed_files::${CHANGED_FILES}"
+
+    - name: Run tests and coverage
+      run: |
+        python -m pytest --cov=. ${{ steps.changed-files.outputs.changed_files }}
+        coverage xml -o coverage.xml
+
+    - name: Upload coverage report
+      uses: codecov/codecov-action@v2
+      with:
+        file: coverage.xml
+        fail_ci_if_error: true
