@@ -43,10 +43,10 @@ jobs:
       run: |
           echo "List all the files that have changed: ${{ steps.changed-files-excluded.outputs.all_changed_files }}"
     
-#     - name: Run tests and coverage
-#       run: |
-#         python -m pytest --cov= NAaaS-M-Dops/${{ steps.changed-files.outputs.changed_files }}
-#         coverage xml -o coverage.xml
+    - name: Run tests and coverage
+      run: |
+        python -m pytest --cov= ${{ steps.changed-files-excluded.outputs.all_changed_files }}
+        coverage xml -o coverage.xml
 
 #     - name: Upload coverage report
 #       uses: codecov/codecov-action@v2
