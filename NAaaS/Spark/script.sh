@@ -9,10 +9,7 @@ if [[ ! -f "$dockerfile_path" ]]; then
   exit 1
 fi
 
-# Copy Dockerfile to temporary file
-cp "$dockerfile_path" "$temp_file_path"
-
-# Modify the Dockerfile line by line
+# Modify the Dockerfile line by line and store in temporary file
 while IFS= read -r line; do
   # Replace occurrences of './NAaaS/Spark/' with './'
   modified_line="${line//\.\/NAaaS\/Spark\//.\/}"
