@@ -1,0 +1,15 @@
+artifact_uri: file:///D:/Topic%20Extraction/mlruns/0/5755af3ba60e42a4a8544efda1002093/artifacts
+end_time: 1686412357996
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: 5755af3ba60e42a4a8544efda1002093
+run_name: nervous-croc-955
+run_uuid: 5755af3ba60e42a4a8544efda1002093
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1686412357946
+status: 3
+tags: []
+user_id: ART

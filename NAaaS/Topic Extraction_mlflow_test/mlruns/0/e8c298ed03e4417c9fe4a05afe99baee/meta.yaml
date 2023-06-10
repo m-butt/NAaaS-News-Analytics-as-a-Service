@@ -1,0 +1,15 @@
+artifact_uri: file:///D:/Topic%20Extraction/mlruns/0/e8c298ed03e4417c9fe4a05afe99baee/artifacts
+end_time: 1686412182506
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: e8c298ed03e4417c9fe4a05afe99baee
+run_name: bustling-rook-875
+run_uuid: e8c298ed03e4417c9fe4a05afe99baee
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1686412182417
+status: 3
+tags: []
+user_id: ART

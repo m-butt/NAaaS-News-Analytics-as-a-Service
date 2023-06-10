@@ -1,0 +1,15 @@
+artifact_uri: file:///D:/Topic%20Extraction/mlruns/0/f52444cffb5f40a2bbd522356f441ef1/artifacts
+end_time: 1686412381547
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: f52444cffb5f40a2bbd522356f441ef1
+run_name: bittersweet-eel-188
+run_uuid: f52444cffb5f40a2bbd522356f441ef1
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1686412381478
+status: 3
+tags: []
+user_id: ART

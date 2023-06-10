@@ -1,0 +1,15 @@
+artifact_uri: file:///D:/Topic%20Extraction/mlruns/0/1bc48fa862d24a02b8b53d00d50b2016/artifacts
+end_time: 1686412538949
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: 1bc48fa862d24a02b8b53d00d50b2016
+run_name: zealous-roo-29
+run_uuid: 1bc48fa862d24a02b8b53d00d50b2016
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1686412538882
+status: 3
+tags: []
+user_id: ART
