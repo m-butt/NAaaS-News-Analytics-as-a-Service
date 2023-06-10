@@ -21,7 +21,9 @@ jobs:
     - name: Determine changed Python files
       id: changed-files
       run: |
-        CHANGED_FILES=$(git diff --name-only HEAD^ HEAD --diff-filter=d -- "**/*.py")
+        LATEST_COMMIT=$(git rev-parse HEAD)
+        PREVIOUS_COMMIT=$(git rev-parse HEAD^)
+        CHANGED_FILES=$(git diff --name-only $PREVIOUS_COMMIT $LATEST_COMMIT --diff-filter=d -- "**/*.py")
         echo "::set-output name=changed_files::${CHANGED_FILES}"
 
     - name: Install dependencies
