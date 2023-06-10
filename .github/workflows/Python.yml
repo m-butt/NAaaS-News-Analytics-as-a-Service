@@ -31,7 +31,7 @@ jobs:
 
     - name: Run tests and coverage
       run: |
-        python -m pytest --cov=. ${{ steps.changed-files.outputs.changed_files }}
+        python -m pytest --cov= NAaaS-M-Dops/${{ steps.changed-files.outputs.changed_files }}
         coverage xml -o coverage.xml
 
     - name: Upload coverage report
