@@ -29,6 +29,14 @@ jobs:
     - name: Install dependencies
       run: pip install -r requirements.txt
 
+    - name: get changed files
+      id: getfile
+      run: |
+            echo "::set-output name=files::$(git diff-tree --no-commit-id --name-only -r ${{ github.sha }} | xargs)"
+    - name: echo output
+      run: |
+        echo ${{ steps.getfile.outputs.files }}
+    
     - name: Run tests and coverage
       run: |
         python -m pytest --cov= NAaaS-M-Dops/${{ steps.changed-files.outputs.changed_files }}
