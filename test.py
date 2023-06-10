@@ -1,2 +1,2 @@
 print("gothddem")
-print("ok")
+print("oksy")
