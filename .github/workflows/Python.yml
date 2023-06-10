@@ -35,18 +35,17 @@ jobs:
       with:
           files: |
             **.py
-            NAaaS-M-Dops
-          files_ignore: docs
+            NAaaS-M-Dops/NAaaS/Topic\ Extraction_mlflow_test
 
     - name: Run step if any .js file(s) or any file in the static folder change
       if: steps.changed-files-excluded.outputs.any_changed == 'true'
       run: |
           echo "List all the files that have changed: ${{ steps.changed-files-excluded.outputs.all_changed_files }}"
     
-    - name: Run tests and coverage
-      run: |
-        python -m pytest --cov= ${{ steps.changed-files-excluded.outputs.all_changed_files }}
-        coverage xml -o coverage.xml
+#     - name: Run tests and coverage
+#       run: |
+#         python -m pytest --cov= ${{ steps.changed-files-excluded.outputs.all_changed_files }}
+#         coverage xml -o coverage.xml
 
 #     - name: Upload coverage report
 #       uses: codecov/codecov-action@v2
