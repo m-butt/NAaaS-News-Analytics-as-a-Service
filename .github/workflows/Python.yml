@@ -26,9 +26,6 @@ jobs:
         CHANGED_FILES=$(git diff --name-only $PREVIOUS_COMMIT $LATEST_COMMIT --diff-filter=d -- "**/*.py")
         echo "::set-output name=changed_files::${CHANGED_FILES}"
 
-    - name: Install dependencies
-      run: pip install -r requirements.txt
-
     - name: Get all changed .py   
       id: changed-files-excluded
       uses: tj-actions/changed-files@v36
@@ -36,6 +33,11 @@ jobs:
           files: |
             NAaaS-M-Dops/NAaaS/Topic\ Extraction_mlflow_test
             **.py
+            
+    - name: Install dependencies
+      if: steps.changed-files-excluded.outputs.any_changed == 'true'
+      run: pip install -r NAaaS-M-Dops/NAaaS/Topic\ Extraction_mlflow_test/requirements.txt
+    
             
     - name: Run Mlflow
       if: steps.changed-files-excluded.outputs.any_changed == 'true'
@@ -45,6 +47,7 @@ jobs:
           echo "Final_accuracy=$(cat outputs/test.txt)" >> $GITHUB_OUTPUT
             
     - name: Compare accuracies and echo message
+      if: steps.changed-files-excluded.outputs.any_changed == 'true'
       run: |
           initial_accuracy=$(grep -oP 'initial_accuracy=\K[^ ]+' $GITHUB_OUTPUT)
           final_accuracy=$(grep -oP 'final_accuracy=\K[^ ]+' $GITHUB_OUTPUT)
