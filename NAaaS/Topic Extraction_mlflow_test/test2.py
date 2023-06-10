@@ -1,1 +1,1 @@
-print("okuwe")
+print("okuwde")
