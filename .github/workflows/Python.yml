@@ -29,21 +29,27 @@ jobs:
     - name: Install dependencies
       run: pip install -r requirements.txt
 
-    - name: get changed files
-      id: getfile
-      run: |
-            echo "::set-output name=files::$(git diff-tree --no-commit-id --name-only -r ${{ github.sha }} | xargs)"
-    - name: echo output
-      run: |
-        echo ${{ steps.getfile.outputs.files }}
-    
-    - name: Run tests and coverage
-      run: |
-        python -m pytest --cov= NAaaS-M-Dops/${{ steps.changed-files.outputs.changed_files }}
-        coverage xml -o coverage.xml
-
-    - name: Upload coverage report
-      uses: codecov/codecov-action@v2
+    - name: Get all changed .py   
+      id: changed-files-excluded
+      uses: tj-actions/changed-files@v36
       with:
-        file: coverage.xml
-        fail_ci_if_error: true
+          files: |
+            **.py
+            NAaaS-M-Dops
+          files_ignore: docs
+
+    - name: Run step if any .js file(s) or any file in the static folder change
+      if: steps.changed-files-excluded.outputs.any_changed == 'true'
+      run: |
+          echo "List all the files that have changed: ${{ steps.changed-files-excluded.outputs.all_changed_files }}"
+    
+#     - name: Run tests and coverage
+#       run: |
+#         python -m pytest --cov= NAaaS-M-Dops/${{ steps.changed-files.outputs.changed_files }}
+#         coverage xml -o coverage.xml
+
+#     - name: Upload coverage report
+#       uses: codecov/codecov-action@v2
+#       with:
+#         file: coverage.xml
+#         fail_ci_if_error: true
