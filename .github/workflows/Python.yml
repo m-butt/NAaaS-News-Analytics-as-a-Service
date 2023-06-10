@@ -21,7 +21,6 @@ jobs:
     - name: Determine changed Python files
       id: changed-files
       run: |
-        git fetch --no-tags --prune --depth=1 origin "+refs/heads/main:refs/remotes/origin/main"
         CHANGED_FILES=$(git diff --name-only ${{ github.event.before }} ${{ github.sha }} --diff-filter=d -- '*.py')
         echo "::set-output name=changed_files::${CHANGED_FILES}"
 
