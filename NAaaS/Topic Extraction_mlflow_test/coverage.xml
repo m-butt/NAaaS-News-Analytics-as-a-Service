@@ -1,0 +1,19 @@
+<coverage branch-rate="0" branches-covered="0" branches-valid="0" complexity="0" line-rate="0.5" lines-covered="10" lines-valid="20" timestamp="1623412345" version="5.5.1">
+    <packages>
+        <package branch-rate="0" complexity="0" line-rate="0.5" name="my_package">
+            <classes>
+                <class branch-rate="0" complexity="0" filename="my_module.py" line-rate="0.5" name="MyClass">
+                    <methods/>
+                    <lines>
+                        <line hits="1" number="1"/>
+                        <line hits="0" number="2"/>
+                        <line hits="1" number="3"/>
+                        <!-- ... -->
+                    </lines>
+                </class>
+                <!-- ... -->
+            </classes>
+        </package>
+        <!-- ... -->
+    </packages>
+</coverage>
