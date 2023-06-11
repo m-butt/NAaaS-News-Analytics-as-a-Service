@@ -104,6 +104,6 @@ def main():
         f.write(str(score))
         
     return score
-def test_example(score):
+def test_example():
     score = main()
     assert score > 1
