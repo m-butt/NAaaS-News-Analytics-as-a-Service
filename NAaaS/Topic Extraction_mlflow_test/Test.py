@@ -1,4 +1,3 @@
-import os
 from mlflow import log_metric, log_params
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.decomposition import NMF
@@ -52,6 +51,7 @@ def Lda(articles, num_topics=1, num_words=1, max_df=0.90, min_df=1):
     topics = []
     for topic_idx, topic in enumerate(lda.components_):
         topic_words = [feature_names[i] for i in topic.argsort()[:-num_words - 1:-1]]
+        sub_topic = topic_idx 
         topics.extend(topic_words)
     return topics
 
@@ -76,7 +76,7 @@ def extract_topics(details):
 if __name__ == "__main__":
     file_path = "para.txt"  # Path to the text file
     try:
-        with open(file_path, 'r') as file:
+        with open(file_path, 'r',encoding="utf-8") as file:
             data = file.read()  # Read the contents of the file into a string
     except FileNotFoundError:
         print(f"File '{file_path}' not found.")
@@ -87,7 +87,7 @@ if __name__ == "__main__":
     score = calculate_similarity_score("terrorism", list_)
     score = sum(score)
     print(score)
-    with open("test.txt", "w") as f:
+    with open("test.txt", "w",encoding="utf-8") as f:
         f.write(str(score))
 
     log_params({"max_df_topic_model_nmf": 0.90, "max_df_Lda_": 0.90})
@@ -95,5 +95,5 @@ if __name__ == "__main__":
     # Log a metric; metrics can be updated throughout the run
     log_metric("accuracy", score)
 
-    with open("test.txt", "w") as f:
+    with open("test.txt", "w",encoding="utf-8") as f:
         f.write(str(score))
