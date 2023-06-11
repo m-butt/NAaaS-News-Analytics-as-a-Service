@@ -6,6 +6,7 @@ from sklearn.decomposition import LatentDirichletAllocation
 import nltk
 from nltk.corpus import wordnet
 from sklearn.preprocessing import MinMaxScaler
+
 nltk.download('wordnet')
 
 def calculate_similarity_score(word, topic_list):
@@ -30,48 +31,48 @@ def calculate_similarity_score(word, topic_list):
     return normalized_scores
 
 def preprocess_text(text):
-        # Tokenize the text
-        tokens = text.lower().split()
+    # Tokenize the text
+    tokens = text.lower().split()
 
-        # Remove stopwords
-        stopwords = set(['a', 'an', 'the', 'and', 'but', 'to', 'of', 'at', 'in', 'on', 'with', 'for', 'by', 'from', 'said'])
-        tokens = [token for token in tokens if token not in stopwords]
+    # Remove stopwords
+    stopwords = set(['a', 'an', 'the', 'and', 'but', 'to', 'of', 'at', 'in', 'on', 'with', 'for', 'by', 'from', 'said'])
+    tokens = [token for token in tokens if token not in stopwords]
 
-        # Join the tokens back into a string
-        preprocessed_text = ' '.join(tokens)
+    # Join the tokens back into a string
+    preprocessed_text = ' '.join(tokens)
 
-        return preprocessed_text
-def Lda(articles, num_topics=1, num_words=1,max_df=0.90, min_df=1):
-        """Apply Non-negative Matrix Factorization to the articles and return the topics and weights"""
-        vectorizer = TfidfVectorizer(max_df=max_df, min_df=min_df,stop_words='english')
-        X = vectorizer.fit_transform(articles)
-        feature_names = vectorizer.get_feature_names_out()
-        lda = LatentDirichletAllocation(n_components=num_topics, max_iter=10, random_state=10).fit(X)
-        topics = []
-        for topic_idx, topic in enumerate(lda.components_):
-            topic_words = [feature_names[i] for i in topic.argsort()[:-num_words - 1:-1]]
-            topics.extend(topic_words)
-        return topics
+    return preprocessed_text
 
+def Lda(articles, num_topics=1, num_words=1, max_df=0.90, min_df=1):
+    """Apply Latent Dirichlet Allocation to the articles and return the topics"""
+    vectorizer = TfidfVectorizer(max_df=max_df, min_df=min_df, stop_words='english')
+    X = vectorizer.fit_transform(articles)
+    feature_names = vectorizer.get_feature_names_out()
+    lda = LatentDirichletAllocation(n_components=num_topics, max_iter=10, random_state=10).fit(X)
+    topics = []
+    for topic_idx, topic in enumerate(lda.components_):
+        topic_words = [feature_names[i] for i in topic.argsort()[:-num_words - 1:-1]]
+        topics.extend(topic_words)
+    return topics
 
-def topic_model_nmf(articles, num_topics=1, num_words=1,max_df=0.90, min_df=1):
-        """Apply Non-negative Matrix Factorization to the articles and return the topics and weights"""
-        vectorizer = TfidfVectorizer(max_df=max_df, min_df=min_df,stop_words='english')
-        X = vectorizer.fit_transform(articles)
-        feature_names = vectorizer.get_feature_names_out()
-        nmf = NMF(n_components=num_topics, max_iter=1000, random_state=10).fit(X)
-        topics = []
-        for topic_idx, topic in enumerate(nmf.components_):
-            topic_words = [feature_names[i] for i in topic.argsort()[:-num_words - 1:-1]]
-            topics.extend(topic_words)
-        return topics
-    
+def topic_model_nmf(articles, num_topics=1, num_words=1, max_df=0.90, min_df=1):
+    """Apply Non-negative Matrix Factorization to the articles and return the topics"""
+    vectorizer = TfidfVectorizer(max_df=max_df, min_df=min_df, stop_words='english')
+    X = vectorizer.fit_transform(articles)
+    feature_names = vectorizer.get_feature_names_out()
+    nmf = NMF(n_components=num_topics, max_iter=1000, random_state=10).fit(X)
+    topics = []
+    for topic_idx, topic in enumerate(nmf.components_):
+        topic_words = [feature_names[i] for i in topic.argsort()[:-num_words - 1:-1]]
+        topics.extend(topic_words)
+    return topics
+
 def extract_topics(details):
-        topics_nmf = topic_model_nmf(list(preprocess_text(details).split(" ")), num_topics=3, num_words=3)
-        topics_lda = Lda(list(preprocess_text(details).split(" ")), num_topics=3, num_words=3)
+    topics_nmf = topic_model_nmf(list(preprocess_text(details).split(" ")), num_topics=3, num_words=3)
+    topics_lda = Lda(list(preprocess_text(details).split(" ")), num_topics=3, num_words=3)
+    topics = [topic for topic in topics_lda if topic
         topics = [topic for topic in topics_lda if topic in topics_nmf]
-        return topics
-
+    return topics
 
 if __name__ == "__main__":
     file_path = "para.txt"  # Path to the text file
@@ -84,10 +85,10 @@ if __name__ == "__main__":
         print(f"Error reading the file '{file_path}'.")
 
     list_ = extract_topics(data)
-    score = calculate_similarity_score("terrorism",list_)
+    score = calculate_similarity_score("terrorism", list_)
     score = sum(score)
     print(score)
-    with open("test.txt", "r") as f:
+    with open("test.txt", "w") as f:
         f.write(str(score))
 
     log_params({"max_df_topic_model_nmf": 0.90, "max_df_Lda_": 0.90})
@@ -97,6 +98,3 @@ if __name__ == "__main__":
 
     with open("test.txt", "w") as f:
         f.write(str(score))
-
-
-
