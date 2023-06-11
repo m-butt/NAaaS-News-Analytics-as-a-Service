@@ -70,8 +70,7 @@ def topic_model_nmf(articles, num_topics=1, num_words=1, max_df=0.90, min_df=1):
 def extract_topics(details):
     topics_nmf = topic_model_nmf(list(preprocess_text(details).split(" ")), num_topics=3, num_words=3)
     topics_lda = Lda(list(preprocess_text(details).split(" ")), num_topics=3, num_words=3)
-    topics = [topic for topic in topics_lda if topic
-        topics = [topic for topic in topics_lda if topic in topics_nmf]
+    topics = [topic for topic in topics_lda if topic in topics_nmf]
     return topics
 
 if __name__ == "__main__":
