@@ -1,6 +1,9 @@
 name: Python Test
 
 on:
+  pull_request:
+    branches: [main, Haziq,mehmood,muhammadb]
+    types: [closed]
   push:
     branches:
       - main
