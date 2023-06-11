@@ -50,9 +50,9 @@ def Lda(articles, num_topics=1, num_words=1, max_df=0.90, min_df=1):
     lda = LatentDirichletAllocation(n_components=num_topics, max_iter=10, random_state=10).fit(X)
     topics = []
     for topic_idx, topic in enumerate(lda.components_):
-        topic_words = [feature_names[i] for i in topic.argsort()[:-num_words - 1:-1]]
-        sub_topic = topic_idx 
+        topic_words = [feature_names[i] for i in topic.argsort()[:-num_words - 1:-1]] 
         topics.extend(topic_words)
+    print(topic_idx)
     return topics
 
 def topic_model_nmf(articles, num_topics=1, num_words=1, max_df=0.90, min_df=1):
@@ -65,6 +65,7 @@ def topic_model_nmf(articles, num_topics=1, num_words=1, max_df=0.90, min_df=1):
     for topic_idx, topic in enumerate(nmf.components_):
         topic_words = [feature_names[i] for i in topic.argsort()[:-num_words - 1:-1]]
         topics.extend(topic_words)
+    print(topic_idx)
     return topics
 
 def extract_topics(details):
