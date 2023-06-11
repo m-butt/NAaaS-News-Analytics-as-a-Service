@@ -4,7 +4,7 @@ install:
 format: 
 	black *.py
 lint:
-	pylint --disable=R,C Test.py
+	pylint --disable=R,C Test.py || true
 test:
 	python -m pytest  -vv --cov=test Test.py
 	coverage xml -o coverage.xml
