@@ -41,9 +41,8 @@ jobs:
             
     - name: Run Mlflow
       if: steps.changed-files-excluded.outputs.any_changed == 'true'
-      run: python -m Test.py
-      with:
-          files: NAaaS-M-Dops/NAaaS/Topic\ Extraction_mlflow_test
+      run: python -m NAaaS/Topic\ Extraction_mlflow_test/Test
+        
           
                             
     - name: Install dependencies
