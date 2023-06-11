@@ -1,0 +1,15 @@
+artifact_uri: file:///D:/Topic%20Extraction/mlruns/0/3fae3746a049476b93b1cb7a547aa742/artifacts
+end_time: 1686470609005
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: 3fae3746a049476b93b1cb7a547aa742
+run_name: sincere-midge-942
+run_uuid: 3fae3746a049476b93b1cb7a547aa742
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1686470608943
+status: 3
+tags: []
+user_id: ART

@@ -1,4 +1,5 @@
-from mlflow import log_metric, log_param, log_params, log_artifacts
+import os
+from mlflow import log_metric, log_params
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.decomposition import NMF
 from sklearn.decomposition import LatentDirichletAllocation
@@ -72,11 +73,6 @@ def extract_topics(details):
         return topics
 
 
-
-import os
-from random import random, randint
-from mlflow import log_metric, log_param, log_params, log_artifacts
-
 if __name__ == "__main__":
     file_path = "para.txt"  # Path to the text file
     try:
@@ -96,12 +92,8 @@ if __name__ == "__main__":
     # Log a metric; metrics can be updated throughout the run
     log_metric("accuracy", score)
 
-    # Log an artifact (output file)
-    if not os.path.exists("outputs"):
-        os.makedirs("outputs")
-    with open("outputs/test.txt", "w") as f:
+    with open("test.txt", "w") as f:
         f.write(str(score))
-    log_artifacts("outputs")
 
 
 
