@@ -64,7 +64,7 @@ jobs:
             coverage.xml         
       
     - name: Upload coverage report
-      if: steps.changed-files-excluded.outputs.any_changed == 'true' 
+      if: steps.changed-files-excluded.outputs.any_changed_xml == 'true' 
       uses: codecov/codecov-action@v2
       with:
         file: |
