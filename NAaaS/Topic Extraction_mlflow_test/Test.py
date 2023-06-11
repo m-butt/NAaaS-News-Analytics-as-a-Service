@@ -87,6 +87,9 @@ if __name__ == "__main__":
     score = calculate_similarity_score("terrorism",list_)
     score = sum(score)
     print(score)
+    with open("test.txt", "r") as f:
+        f.write(str(score))
+
     log_params({"max_df_topic_model_nmf": 0.90, "max_df_Lda_": 0.90})
 
     # Log a metric; metrics can be updated throughout the run
