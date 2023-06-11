@@ -49,7 +49,7 @@ jobs:
     
     - name: Run tests and coverage
       run: |
-        python -m pytest  -vv --cov=test NAaaS/Topic\ Extraction_mlflow_test/Test.py
+        python -m pytest  -vv --cov=NAaaS/Topic\ Extraction_mlflow_test/Test.py
         coverage xml -o coverage.xml
 
     - name: Upload coverage report
