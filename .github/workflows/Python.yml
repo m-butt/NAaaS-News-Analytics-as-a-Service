@@ -41,35 +41,22 @@ jobs:
             
     - name: Run Mlflow
       if: steps.changed-files-excluded.outputs.any_changed == 'true'
-      run: |
-          echo "Init_accuracy=$(cat NAaaS/Topic\ Extraction_mlflow_test/output.txt)" >> $GITHUB_OUTPUT
-          run: python -m NAaaS/Topic\ Extraction_mlflow_test/Test.py
-          echo "Final_accuracy=$(cat NAaaS/Topic\ Extraction_mlflow_test/output.txt)" >> $GITHUB_OUTPUT
-   
-              
-            
-#     - name: Compare accuracies and echo message
-#       if: steps.changed-files-excluded.outputs.any_changed == 'true'
-#       run: |
-#           initial_accuracy=$(grep -oP 'initial_accuracy=\K[^ ]+' $GITHUB_OUTPUT)
-#           final_accuracy=$(grep -oP 'final_accuracy=\K[^ ]+' $GITHUB_OUTPUT)
-#           initial_accuracy_float=$(echo "$initial_accuracy" | awk '{printf "%.2f", $0}')
-#           final_accuracy_float=$(echo "$final_accuracy" | awk '{printf "%.2f", $0}'
-#            if (( $(echo "$final_accuracy_float > $initial_accuracy_float" | bc -l) )); then
-#             echo "Accuracy increased from $initial_accuracy to $final_accuracy"
-#           elif (( $(echo "$final_accuracy_float < $initial_accuracy_float" | bc -l) )); then
-#             echo "Accuracy decreased from $initial_accuracy to $final_accuracy"
-#           else
-#             echo "Accuracy remained the same at $initial_accuracy"
-#           fi
+      run: python -m NAaaS/Topic\ Extraction_mlflow_test/Test.py
           
-#     - name: Run tests and coverage
-#       run: |
-#         python -m pytest --cov= ${{ steps.changed-files-excluded.outputs.all_changed_files }}
-#         coverage xml -o coverage.xml
+                            
+    - name: Install dependencies
+      run: pip install -r requirements.txt
+    
+    - name: Run tests and coverage
+      run: |
+        python -m pytest  -vv --cov= Test.py
+        coverage xml -o coverage.xml
+        with:
+          files: |
+            NAaaS-M-Dops/NAaaS/Topic\ Extraction_mlflow_test
 
-#     - name: Upload coverage report
-#       uses: codecov/codecov-action@v2
-#       with:
-#         file: coverage.xml
-#         fail_ci_if_error: true
+    - name: Upload coverage report
+      uses: codecov/codecov-action@v2
+      with:
+        file: coverage.xml
+        fail_ci_if_error: true
