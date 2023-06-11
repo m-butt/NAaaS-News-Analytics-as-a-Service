@@ -76,10 +76,9 @@ def extract_topics(details):
     return topics
 
 
-def test_example(score):
-    assert score > 1
 
-if __name__ == "__main__":
+
+def main():
     file_path = "para.txt"  # Path to the text file
     try:
         with open(file_path, 'r',encoding="utf-8") as file:
@@ -103,3 +102,8 @@ if __name__ == "__main__":
 
     with open("test.txt", "w",encoding="utf-8") as f:
         f.write(str(score))
+        
+    return score
+def test_example(score):
+    score = main()
+    assert score > 1
