@@ -41,7 +41,9 @@ jobs:
             
     - name: Run Mlflow
       if: steps.changed-files-excluded.outputs.any_changed == 'true'
-      run: python -m NAaaS/Topic\ Extraction_mlflow_test/Test
+      run: |
+        cd NAaaS/Topic\ Extraction_mlflow_test/
+        python -m Test.py
         
           
                             
@@ -49,7 +51,7 @@ jobs:
       run: pip install -r requirements.txt
     
     - name: Run tests and coverage
-      run: echo "Starting"
+      run: echo "Starting now"
     
     - name: Install dependencies
       run: |
