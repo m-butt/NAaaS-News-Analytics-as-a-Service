@@ -91,7 +91,6 @@ def main():
     list_ = extract_topics(data)
     score = calculate_similarity_score("terrorism", list_)
     score = sum(score)
-    test_example(score)
     with open("test.txt", "w",encoding="utf-8") as f:
         f.write(str(score))
 
