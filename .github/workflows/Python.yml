@@ -53,6 +53,7 @@ jobs:
     
     - name: Install dependencies
       run: |
+        cd NAaaS-M-Dops/NAaaS/Topic\ Extraction_mlflow_test/up
         make install
     
     - name: Lint
