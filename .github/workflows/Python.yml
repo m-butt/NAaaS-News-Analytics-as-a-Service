@@ -35,24 +35,36 @@ jobs:
             **.py           
     
     - name: Run tests and coverage
+      if: steps.changed-files-excluded.outputs.any_changed == 'true'
       run: echo "Starting now"
     
     - name: Install dependencies
+      if: steps.changed-files-excluded.outputs.any_changed == 'true'
       run: |
         cd NAaaS/Topic\ Extraction_mlflow_test/
         make install
     
     - name: Lint
+      if: steps.changed-files-excluded.outputs.any_changed == 'true'
       run: |
         cd NAaaS/Topic\ Extraction_mlflow_test/
         make lint
     
     - name: Test
+      if: steps.changed-files-excluded.outputs.any_changed == 'true'
       run: |
         cd NAaaS/Topic\ Extraction_mlflow_test/
         make test
         
+    - name: check covergae report 
+      uses: tj-actions/changed-files@v36
+      with:
+          files: |
+            NAaaS-M-Dops/NAaaS/Topic\ Extraction_mlflow_test
+            coverage.xml         
+      
     - name: Upload coverage report
+      if: steps.changed-files-excluded.outputs.any_changed == 'true' 
       uses: codecov/codecov-action@v2
       with:
         file: |
