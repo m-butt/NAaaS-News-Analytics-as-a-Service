@@ -5,6 +5,7 @@ from sklearn.decomposition import LatentDirichletAllocation
 import nltk
 from nltk.corpus import wordnet
 from sklearn.preprocessing import MinMaxScaler
+import pytest
 
 nltk.download('wordnet')
 
@@ -74,6 +75,10 @@ def extract_topics(details):
     topics = [topic for topic in topics_lda if topic in topics_nmf]
     return topics
 
+
+def test_example(score):
+    assert score > 1
+
 if __name__ == "__main__":
     file_path = "para.txt"  # Path to the text file
     try:
@@ -87,7 +92,7 @@ if __name__ == "__main__":
     list_ = extract_topics(data)
     score = calculate_similarity_score("terrorism", list_)
     score = sum(score)
-    print(score)
+    test_example(score)
     with open("test.txt", "w",encoding="utf-8") as f:
         f.write(str(score))
 
