@@ -6,5 +6,4 @@ format:
 lint:
 	pylint --disable=R,C Test.py || true
 test:
-	python -m pytest --cov=Test.py --cov-report=html
-	coverage xml -o coverage.xml
+	python -m pytest --cov=test Test.py
