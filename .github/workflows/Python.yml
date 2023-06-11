@@ -42,7 +42,8 @@ jobs:
     - name: Run Mlflow
       if: steps.changed-files-excluded.outputs.any_changed == 'true'
       run: |
-          echo ::set-output name=version::$(cat VERSION)
+          echo ::set-output name=version::$(cat NAaaS/Topic\ Extraction_mlflow_test/test.txt)
+          echo ${{ steps.vars.outputs.version }}
           echo "Init_accuracy=$(cat NAaaS/Topic\ Extraction_mlflow_test/test.txt)" >> $GITHUB_OUTPUT
           run: python -m NAaaS/Topic\ Extraction_mlflow_test/Test.py
           echo "Final_accuracy=$(cat NAaaS/Topic\ Extraction_mlflow_test/test.txt)" >> $GITHUB_OUTPUT
