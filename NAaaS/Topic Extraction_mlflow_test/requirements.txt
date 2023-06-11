@@ -1,2 +1,7 @@
 mlflow
 scikit-learn
+black
+pylint
+pytest
+pytest-cov
+click
