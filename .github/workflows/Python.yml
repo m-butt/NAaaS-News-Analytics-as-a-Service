@@ -41,16 +41,32 @@ jobs:
             
     - name: Run Mlflow
       if: steps.changed-files-excluded.outputs.any_changed == 'true'
-      run: python -m NAaaS/Topic\ Extraction_mlflow_test/Test.py
+      run: python -m Test.py
+      with:
+          files: NAaaS-M-Dops/NAaaS/Topic\ Extraction_mlflow_test
           
                             
     - name: Install dependencies
       run: pip install -r requirements.txt
     
     - name: Run tests and coverage
+      run: echo"Starting"
+    
+    - name: Install dependencies
       run: |
-        python -m pytest  -vv --cov= Test.py
-        coverage xml -o coverage.xml
+        make install
+        with:
+          files: NAaaS-M-Dops/NAaaS/Topic\ Extraction_mlflow_test
+    
+    - name: Lint
+      run: |
+        make lint
+        with:
+          files: NAaaS-M-Dops/NAaaS/Topic\ Extraction_mlflow_test
+    
+    - name: Test
+      run: |
+        make test
         with:
           files: |
             NAaaS-M-Dops/NAaaS/Topic\ Extraction_mlflow_test
@@ -58,5 +74,6 @@ jobs:
     - name: Upload coverage report
       uses: codecov/codecov-action@v2
       with:
-        file: coverage.xml
+        file: |
+          coverage.xml
         fail_ci_if_error: true
