@@ -20,4 +20,4 @@ NAaaS caters to individuals interested in staying informed about local events an
 News updates occur rapidly, requiring our map to be dynamic and constantly updated. As new articles are published, NAaaS seamlessly integrates them into the system. Given the immense volume of data to process, we employ distributed processing techniques using Spark and Kafka, industry-leading big data tools. To ensure scalability and efficiency, we utilize Docker images, providing a lightweight and standardized solution that meets industrial standards.
 
 For a detailed description of Project, please contact at 
-#### 1- m.butt_@outlook.com
+#### m.butt_@outlook.com
