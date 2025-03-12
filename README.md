@@ -3,7 +3,7 @@
 
 ![](Images/Demo1.png)![](Images/Demo2.png)![](Images/Demo3.jpg)
 ## Introduction
-We are proud to present our Final Year Project (FYP), NAaaS (News Analytics as a Service). NAaaS revolutionizes the way news is accessed and analyzed, offering a comprehensive solution for obtaining relevant news information within specified timeframes. Gone are the days of manual searches and sifting through numerous articles. With NAaaS, we have streamlined the process through advanced automation techniques and cutting-edge technologies.
+NAaaS (News Analytics as a Service). NAaaS revolutionizes the way news is accessed and analyzed, offering a comprehensive solution for obtaining relevant news information within specified timeframes. Gone are the days of manual searches and sifting through numerous articles. With NAaaS, we have streamlined the process through advanced automation techniques and cutting-edge technologies.
 
 ## Problem Statement
 Traditionally, when seeking news on specific topics over extended periods, users were left with two options. They could either rely on third-party sources, hoping someone had already done the legwork, or manually scour news archives, painstakingly examining each article to find the desired information. Imagine the time and effort required for searching through years of news manually—it was simply impractical.
@@ -20,9 +20,5 @@ NAaaS caters to individuals interested in staying informed about local events an
 ## Challenge: Real-Time Updates and Big Data Processing
 News updates occur rapidly, requiring our map to be dynamic and constantly updated. As new articles are published, NAaaS seamlessly integrates them into the system. Given the immense volume of data to process, we employ distributed processing techniques using Spark and Kafka, industry-leading big data tools. To ensure scalability and efficiency, we utilize Docker images, providing a lightweight and standardized solution that meets industrial standards.
 
-For a detailed description of our Final Year Project, please contact us at 
-#### 1- arshad.islam@nu.edu.pk
-#### 2- m.butt_@outlook.com
-#### 3- mehmood9501@gmail.com github MehmoodAmjad
-#### 4- danyalfaheem@gmail.com github DanyalFaheem
-
+For a detailed description of Project, please contact at 
+#### 1- m.butt_@outlook.com
